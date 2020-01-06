@@ -1,0 +1,6 @@
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}

@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'com.studiojms'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_13
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    group 'com.studiojms'
+
+    sourceCompatibility = JavaVersion.VERSION_13
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.apache.kafka:kafka-clients:2.4.0'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
