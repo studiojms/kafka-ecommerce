@@ -18,18 +18,18 @@ public class NewOrderService {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         try (var orderDispatcher = new KafkaDispatcher<Order>();
              var emailDispatcher = new KafkaDispatcher<String>()) {
+            var email = Math.random() + "@email.com";
 
             for (var i = 0; i < 10; i++) {
-                var userId = UUID.randomUUID().toString();
                 var orderId = UUID.randomUUID().toString();
                 var amount = BigDecimal.valueOf(Math.random() * 5000 + 1);
 
-                var order = new Order(userId, orderId, amount);
+                var order = new Order(orderId, amount, email);
 
-                orderDispatcher.send(NEW_ORDER_TOPIC, userId, order);
+                orderDispatcher.send(NEW_ORDER_TOPIC, email, order);
 
-                var email = "Thanks for your order. It's now in process.";
-                emailDispatcher.send(SEND_EMAIL_TOPIC, userId, email);
+                var emailContent = "Thanks for your order. It's now in process.";
+                emailDispatcher.send(SEND_EMAIL_TOPIC, email, emailContent);
             }
         }
     }

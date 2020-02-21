@@ -23,7 +23,7 @@ allprojects {
     }
 
     dependencies {
-        compile 'org.apache.kafka:kafka-clients:2.4.0'
+        implementation 'org.apache.kafka:kafka-clients:2.4.0'
 
         testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
     }
